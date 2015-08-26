@@ -33,7 +33,7 @@ function grunt_wordpress_setup() {
 
 	// Add navigaiton menus support
 	register_nav_menus(array(
-		'primary' => __('Primary Menu', 'grunt_wordpress_setup' )
+		'main' => __('Primary Menu', 'grunt_wordpress_setup' )
 	));
 
 } add_action('after_setup_theme', 'grunt_wordpress_setup');

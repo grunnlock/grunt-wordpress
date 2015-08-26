@@ -7,7 +7,7 @@ module.exports = function( grunt ) {
 	var config  	= {
 		port: 35729,
 		dev: packageJSON.name + '_dev',
-		dist: packageJSON.name + '_release',
+		dist: packageJSON.name,
 		folders: {
 			js:   'assets/js',
 			less: 'assets/less',
@@ -200,7 +200,7 @@ module.exports = function( grunt ) {
 				user: 'user',
 				pass: 'secret-password',
 				path: {
-				    local: packageJSON.name + '_release',
+				    local: packageJSON.name,
 				    remote: 'public_html/demo/'
 				}
 			},
@@ -209,7 +209,7 @@ module.exports = function( grunt ) {
 				user: 'user',
 				pass: 'secret-password',
 				path: {
-				    local: packageJSON.name + '_release',
+				    local: packageJSON.name,
 				    remote: 'public_html/dev/'
 				}
 			}
@@ -229,7 +229,7 @@ module.exports = function( grunt ) {
 	]);
 
 	// Compile files and bump the version of package.json and across all files
-	grunt.registerTask('build', function ( type ) {
+	grunt.registerTask('build', function ( releaseType ) {
 
 		// Run the building process
 		grunt.task.run([
@@ -243,12 +243,26 @@ module.exports = function( grunt ) {
 		]);
 
 		// Bump the package.json version depending of the release type
-		if( !type ) {
+		if( !releaseType ) {
 			// Not a release, simply a development update
-			grunt.task.run(['bump']);
+
+			// Get current project version
+			var currentVersion = packageJSON.version;
+
+			// Split the current version into an array
+			currentVersion = currentVersion.split('.');
+
+			// Do a minor bump or a patch bump depending of the current version
+			if( currentVersion[ currentVersion.length-1 ] > 8 ) {
+				grunt.task.run(['bump:minor']);
+			} else {
+				grunt.task.run(['bump:patch']);
+			}
+
 		} else {
 
-			if( type === 'release' ) {
+			// Release
+			if( releaseType === 'release' ) {
 				// Main release
 				grunt.task.run(['bump:major']);
 			} else {
