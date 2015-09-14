@@ -55,7 +55,7 @@ function grunt_wordpress_authenticate( $username ) {
 function grunt_wordpress_scripts() {
 
 	// CSS
-	wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/main.css', array(), '0.0.4' );
+	wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0.0' );
 
 	// JS
 
@@ -65,8 +65,8 @@ function grunt_wordpress_scripts() {
 	wp_enqueue_script('jquery', '//code.jquery.com/jquery-1.11.1.min.js', array(), '1.11.1', true);
 	wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/res/js/fastclick.min.js', array(), '1.0.6', true );
 
-	wp_enqueue_script( 'functions', get_template_directory_uri() . '/assets/js/functions.js', array(), '0.0.4', true );
-	wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array(), '0.0.4', true );
+	wp_enqueue_script( 'functions', get_template_directory_uri() . '/assets/js/functions.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.0', true );
 
 
 	// Scripts for specific pages
@@ -74,7 +74,7 @@ function grunt_wordpress_scripts() {
 
 		// Post types
 		case 'post-blog':
-			wp_enqueue_script( 'post-blog', get_template_directory_uri() . '/assets/js/post-blog.js', array(), '0.0.4', true );
+			wp_enqueue_script( 'post-blog', get_template_directory_uri() . '/assets/js/post-blog.js', array(), '1.0.0', true );
 		break;
 
 	}

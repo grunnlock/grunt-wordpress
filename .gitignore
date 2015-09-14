@@ -1,5 +1,4 @@
 .DS_Store
 .npm_debug
 node_modules
-manifest.json
-www
+bower_components
