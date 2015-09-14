@@ -20,11 +20,8 @@ function grunt_wordpress_page_name() {
 		}
 
 	} else {
-
 		return $pageTemplate;
-
 	}
-
 
 }
 
@@ -55,22 +52,36 @@ function grunt_wordpress_authenticate( $username ) {
 function grunt_wordpress_scripts() {
 
 	// CSS
-	wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/main.css', array(), '@@PROJECT_VERSION' );
+	wp_enqueue_style( 'normalize', get_template_directory_uri() . '/res/css/normalize.css', array(), '3.0.2' );
+
+	wp_enqueue_style( 'keyframes', get_template_directory_uri() . '/assets/css/keyframes.css', array(), '@@PROJECT_VERSION' );
+	wp_enqueue_style( 'typography', get_template_directory_uri() . '/assets/css/typography.css', array(), '@@PROJECT_VERSION' );
+	wp_enqueue_style( 'base', get_template_directory_uri() . '/assets/css/base.css', array(), '@@PROJECT_VERSION' );
+	wp_enqueue_style( 'elements', get_template_directory_uri() . '/assets/css/elements.css', array(), '@@PROJECT_VERSION' );
 
 	// JS
 
 	// Deregister jQuery...
 	wp_deregister_script('jquery');
 	// ... To load it properly through CDN
-	wp_enqueue_script('jquery', '//code.jquery.com/jquery-1.11.1.min.js', array(), '1.11.1', true);
+	wp_enqueue_script('jquery', '//code.jquery.com/jquery-2.1.4.min.js', array(), '2.1.4', true);
+	wp_enqueue_script( 'modernizr', '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', array(), '2.8.3', false );
 	wp_enqueue_script( 'fastclick', get_template_directory_uri() . '/res/js/fastclick.min.js', array(), '1.0.6', true );
 
 	wp_enqueue_script( 'functions', get_template_directory_uri() . '/assets/js/functions.js', array(), '@@PROJECT_VERSION', true );
 	wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/js/main.js', array(), '@@PROJECT_VERSION', true );
 
-
 	// Scripts for specific pages
 	switch ( grunt_wordpress_page_name() ) {
+
+		// Post types
+		case 'page-sample':
+			// CSS
+			wp_enqueue_style( 'page-sample', get_template_directory_uri() . '/assets/css/page-sample.css', array(), '@@PROJECT_VERSION' );
+
+			// JS
+			wp_enqueue_script( 'page-sample', get_template_directory_uri() . '/assets/js/page-sample.js', array(), '@@PROJECT_VERSION', true );
+		break;
 
 		// Post types
 		case 'post-blog':

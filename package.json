@@ -1,6 +1,6 @@
 {
   "name": "grunt-wordpress",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "grunt": "~0.4.5",
     "grunt-bump": "^0.3.1",

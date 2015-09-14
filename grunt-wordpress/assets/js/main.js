@@ -1,1 +1,1 @@
-!function(a,b,c){"use strict"}(jQuery,document,window);
+jQuery(document).ready(function(a){FastClick.attach(document.body),Modernizr.mq("only screen and (min-width: 1200px)")?device="desktop":Modernizr.mq("only screen and (min-width: 992px)")&&(device="tablet")});
